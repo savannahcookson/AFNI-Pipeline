@@ -33,9 +33,11 @@
 #############################
 ## User Inputs
 #############################
-userID='scookson'
+userPath='/home/despoC/scookson'
 
-studyDirectory="~/Desktop/1804/"
+scriptsPath='/home/despoC/scookson/Repositories/AFNI-Pipeline/permanent'
+
+studyDirectory='Desktop/DemoTest'
 
 studySuffix=demo #select an identifier for your study. This will be appended to the files/folders produced by the script.
 
@@ -45,17 +47,17 @@ runPrefix="fMRI_run" #set to the prefix ONLY for your run names, that is, the pr
 
 acqSeq="alt+z" #set to the acquisition sequence for your data
 
-blur=6 #set to 2x voxel width
+blur=6 #set to 2x voxel width for standard applications
 
-regressorNames='D1 D2 Error R4 R8' #Symbolic names you would like to give each stimulus file in the order they appear in the stim folder
+regressorNames='L R' #Symbolic names you would like to give each stimulus file in the order they appear in the stim folder
 
-contrasts=("+D1" "D1" "+D1 -D2" "D1vD2" "+D1 -R4" "D1vR4" "+D1 -R8" "D1vR8") #symbolic contrasts and labels. Should be entered in pairs with the symbolic expression first.
+contrasts=("+L" "+L -R" "D1vD2") #symbolic contrasts and labels. Should be entered in pairs with the symbolic expression first.
 
-subjects=("41") # subjects you desire to run; should match the folder name in which the starting data appear  "42" "43" "45" "46" "48" "49" "53" "54" "57" "59" "62" "63" "64" "67" "68" "69" "70" "71"
+subjects=("1") # subjects you desire to run; should match the folder name in which the starting data appear
 
-produceScripts=false #change to false if you do not wish to produce the scripts
+produceScripts=true #change to false if you do not wish to produce the scripts
 
-runProcessing=true #change to false if you do not wish to run the processing scripts
+runProcessing=false #change to false if you do not wish to run the processing scripts
 
 
 
@@ -65,7 +67,7 @@ runProcessing=true #change to false if you do not wish to run the processing scr
 #############################
 
 
-outDirectory='/home/despoC/'$userID'/'$studyDirectory
+outDirectory=$userPath'/'$studyDirectory
 
 if [ "$produceScripts" = true ];
 then
