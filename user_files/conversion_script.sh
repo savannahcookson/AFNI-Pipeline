@@ -33,11 +33,11 @@ if [ $fileType == 1 ]; then
 	
 	echo Using CSV Setup...
 	CSVLocation=$outDirectory'/'$setupFilename
-	sh /home/despoC/scookson/Desktop/tutorialScripts/permanent/script_dicom_nii.sh $outDirectory $CSVLocation $rawDataLocation
+	sh $scriptsPath/script_dicom_nii.sh $outDirectory $CSVLocation $rawDataLocation
 
 else
 
 	echo Using XLS Setup...
-	dicom_nii_CABI.py $setupFilename $outDirectory $rawDataLocation 'raw_nii'
+	$scriptsPath/dicom_nii_CABI.py $setupFilename $outDirectory $rawDataLocation 'raw_nii'
 
 fi
