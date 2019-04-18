@@ -81,7 +81,7 @@ echo ${analysisdirectory}${nii_folder}/${nii_name}.nii
 echo ------------------------------------------------------------
 
 pwd
-dcm2nii -d n -e n -n y -i n -n y -p n -r y -x n -g n ./
+dcm2nii -d n -e n -n y -i n -n y -p n -r y -x n -g n .
 
 mkdir -p ${analysisdirectory}
 mkdir -p ${analysisdirectory}${nii_folder}
@@ -91,7 +91,7 @@ mkdir -p ${analysisdirectory}${nii_folder}
 #echo  ../${subject}${nii_folder}/${nii_name}.nii
 #echo ${infname}
 #echo ------------------------------------------------------------
-mv ${dicom_folder}/${fname}.nii ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii
+mv ./${dicom_folder}/${fname}.nii ${analysisdirectory}${nii_folder}/${nii_name}.nii
 
 #if [ -f ${dicom_folder}/00001.bval ]
 #then
