@@ -29,7 +29,6 @@ analysisdirectory=$3
 scriptsdir=$4
 
 subjID=$subject'_'$studySuffix
-pe 
 echo $subjID
 jobID=job_$subjID
 
