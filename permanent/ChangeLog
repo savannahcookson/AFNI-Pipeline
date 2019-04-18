@@ -1,0 +1,23 @@
+CABI Stream: Permanent Scripts Changelog
+
+20160719: Savannah Cookson
+- Updated parallel_proc.sh file to handle subject identifiers that start with any character
+- Removed automatic "s" appending to subject number in CSV conversion script
+
+20160427: Savannah Cookson
+- Added functionality for running GLM only (GLM_only_script.sh)
+
+20160314: Savannah Cookson
+- Updated AFNI_PROC.sh to look for user-given runPrefix
+
+20160120: Savannah Cookson
+- Fixed call to tcsh-shell.sh in parallel-proc.sh
+
+20151104: Savannah Cookson
+- Handled single contrast exception logic in formatting command
+
+20151028: Savannah Cookson
+- AFNI_PROC.sh updated to allow for variable acquisition sequences. 
+
+20150910: Savannah Cookson
+- Scripts updated to point to sync folder where necessary. Minor fixes to variable calls in AFNI_PROC.sh and parallel_proc.sh to update the handling of subject and studySuffix to make subjID variable. 
