@@ -59,7 +59,7 @@ dicom_root=$4
 ####################
 ## anatomical scan you want to use (no extension): Filename under which your converted 
 ## anatomical file will be saved
-anat_name=T1
+anat_name='T1'
 ## resting-state scan you want to use (no extension, optional)
 
 ##########################################################################################
@@ -73,21 +73,21 @@ subnum=0;
 OLDIFS=$IFS
 IFS=,
 [ ! -f $subj_info ] && { echo "$subj_info file not found"; exit 99; }
-while read subject dicom_subj dicom_anat r1 rname fnum
+while read subject dicom_subj dicom_anat r1 rname
 do
 subnum=$((subnum +1));
 ##########################################################################################
 ## 
 if [  $subnum -gt 1 ] && [ $subnum -lt 2000  ] && [ $subject != '0' ]
 then
-#	echo "--------------------------------------------------------------------------------"
-#	echo " $subject	--	$dicom_subj	--	$dicom_anat	--	${anat_name} "
-#	echo "--------------------------------------------------------------------------------"
-sh ${scripts_dir}/shin_dicom2nii.sh ${analysisdirectory} ${subject} ${anat_name} ${dicom_root} ${dicom_subj} ${dicom_anat} raw_nii ${fnum}
+	echo "--------------------------------------------------------------------------------"
+	echo " $subject	--	$dicom_subj	--	$dicom_anat	--	${anat_name} "
+	echo "--------------------------------------------------------------------------------"
+sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} ${anat_name} ${dicom_root} ${dicom_subj} ${dicom_anat} raw_nii
 	echo "--------------------------------------------------------------------------------"
 	echo " $subject	--	$dicom_subj	--	${r1} "
 	echo "--------------------------------------------------------------------------------"
-sh ${scripts_dir}/shin_dicom2nii.sh ${analysisdirectory} ${subject} fMRI_run${rname} ${dicom_root} ${dicom_subj} ${r1} raw_nii ${fnum}
+sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} fMRI_run${rname} ${dicom_root} ${dicom_subj} ${r1} raw_nii
 
 
 fi

@@ -10,17 +10,18 @@
 # Written by Jaemin Shin, PhD (jaemins@gatech.edu), Center for Advanced Brain Imaging
 #
 ## directory where scripts are located
+scriptsdir=$1
 ## full/path/to/site
-analysisdirectory=$1
+analysisdirectory=$2
 ## full/path/to/site/subject_list
-subject=$2
+subject=$3
 ## name of anatomical scan (no extension)
-nii_name=$3
+nii_name=$4
 ## name of resting-state scan (no extension)
-dicom_root=$4
-dicom_subj=$5
-dicom_folder=$6
-nii_folder=$7
+dicom_root=$5
+dicom_subj=$6
+dicom_folder=$7
+nii_folder=$8
 #fnum=$8
 
 if [ ! -z "$nii_folder" ]; then
@@ -35,10 +36,10 @@ mkdir ~/.dcm2nii/
 cp -f /home/public/dcm2nii/dcm2nii.ini ~/.dcm2nii/
 fi
 
-echo ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii
-if [ ! -f ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii ]
+echo ${analysisdirectory}${nii_folder}/${nii_name}.nii
+if [ ! -f ${analysisdirectory}${nii_folder}/${nii_name}.nii ]
 then
-if [ ! -f ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii.gz ]
+if [ ! -f ${analysisdirectory}${nii_folder}/${nii_name}.nii.gz ]
 then
 
 cd ${dicom_root}
@@ -76,14 +77,14 @@ echo 'Center for Advanced Brain Imaging'
 echo version 09/23/2015
 echo ------------------------------------------------------------
 echo Converting Dicom to nii...
-echo ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii
+echo ${analysisdirectory}${nii_folder}/${nii_name}.nii
 echo ------------------------------------------------------------
 
 pwd
 dcm2nii -d n -e n -n y -i n -n y -p n -r y -x n -g n ./
 
-mkdir -p ${analysisdirectory}${subject}
-mkdir -p ${analysisdirectory}${subject}${nii_folder}
+mkdir -p ${analysisdirectory}
+mkdir -p ${analysisdirectory}${nii_folder}
 #echo ------------------------------------------------------------
 #echo ../${subject}${nii_folder}
 #echo  ${dicom_folder}/00001.nii
