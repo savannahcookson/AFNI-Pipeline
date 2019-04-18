@@ -36,23 +36,23 @@
 ####################
 ## scripts directory: File path for the folder containing this script and shin_dicom2nii.sh
 ####################
-scripts_dir="/home/despoC/scookson/Desktop/tutorialScripts/permanent"
+scripts_dir=$1
 
 ####################
 ## analysis directory: Folder in which you want your subject data to be saved. Data will 
 ## be automatically sorted into subfolders for each subject.
 ####################
-analysisdirectory=$1
+analysisdirectory=$2
 
 ####################
 ## Subject list and parameters: File path of CSV file (see exampleList.csv)
 ####################
-subj_info=$2
+subj_info=$3
 
 ####################
 ## Dicom path: Filepath of parent folder containing the raw data referenced in CSV file (col 2)
 ####################
-dicom_root=$3
+dicom_root=$4
 
 ####################
 ## Parameters

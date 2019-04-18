@@ -33,7 +33,7 @@ if [ $fileType == 1 ]; then
 	
 	echo Using CSV Setup...
 	CSVLocation=$outDirectory'/'$setupFilename
-	sh $scriptsPath/script_dicom_nii.sh $outDirectory $CSVLocation $rawDataLocation
+	sh $scriptsPath/script_dicom_nii.sh $scriptsPath $outDirectory $CSVLocation $rawDataLocation
 
 else
 
