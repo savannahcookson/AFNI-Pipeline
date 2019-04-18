@@ -16,18 +16,18 @@
 ##
 #################################
 
-userID='scookson'
-studyDirectoryName='Desktop/1804/'
-setupFilename='CSV_DataFileNEW.csv'
-rawDataLocation='/home/despoC/scookson/Desktop/1804/raw_data/'
-fileType=1 #use 1 for original CSV setup; use 2 for updated XLSX version
+userPath='/home/despoC/scookson'
+scriptsPath='/home/despoC/scookson/Repositories/AFNI-Pipeline/permanent'
+studyDirectoryName='Desktop/DemoTest'
+setupFilename='exampleList_CSVversion.csv'
+rawDataLocation='/home/despoC/scookson/Repositories/AFNI-Pipeline/tutorial/rawData'
+fileType=1 #use 1 for original CSV setup; use 2 for updated XLSX version (in progress)
 
 #################################
 ## DO NOT EDIT BELOW THIS LINE ##
 #################################
 
-outDirectory='/home/despoC/'$userID'/'$studyDirectoryName
-scripts_dir="/home/despoC/scookson/Desktop/tutorialScripts/permanent"
+outDirectory=$userPath'/'$studyDirectoryName
 
 if [ $fileType == 1 ]; then
 	
