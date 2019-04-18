@@ -22,7 +22,7 @@ dicom_root=$5
 dicom_subj=$6
 dicom_folder=$7
 nii_folder=$8
-#fnum=$8
+fname=$9
 
 if [ ! -z "$nii_folder" ]; then
    	nii_folder=${nii_folder%/} #remove '/' at the end
@@ -91,7 +91,7 @@ mkdir -p ${analysisdirectory}${nii_folder}
 #echo  ../${subject}${nii_folder}/${nii_name}.nii
 #echo ${infname}
 #echo ------------------------------------------------------------
-mv ${dicom_folder}/00001.nii ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii
+mv ${dicom_folder}/${fname}.nii ${analysisdirectory}${subject}${nii_folder}/${nii_name}.nii
 
 #if [ -f ${dicom_folder}/00001.bval ]
 #then
