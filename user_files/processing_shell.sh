@@ -90,7 +90,7 @@ then
 	for subject in "${subjects[@]}" 
 	do
 
-		sh /home/despoC/scookson/Desktop/tutorialScripts/permanent/parallel_proc.sh $subject $studySuffix $outDirectory
+		sh $scriptsPath/parallel_proc.sh $subject $studySuffix $outDirectory $scriptsPath
 		
 	done
 else
