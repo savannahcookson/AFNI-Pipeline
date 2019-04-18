@@ -53,7 +53,7 @@ regressorNames='L R' #Symbolic names you would like to give each stimulus file i
 
 contrasts=("+L" "+L -R") #symbolic contrasts and labels. Should be entered in pairs with the symbolic expression first.
 
-subjects=("1" "2" "3") # subjects you desire to run; should match the folder name in which the starting data appear
+subjects=("1") # subjects you desire to run; should match the folder name in which the starting data appear
 
 produceScripts=true #change to false if you do not wish to produce the scripts
 
