@@ -1,4 +1,5 @@
 # AFNI-Pipeline
 AFNI pipeline I use for most basic fMRI analyses
 
-Hello world!
+##TO-DOs:
+- Add support for producing scripts that don't run regression
