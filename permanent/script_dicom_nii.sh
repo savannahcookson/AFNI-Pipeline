@@ -73,7 +73,7 @@ subnum=0;
 OLDIFS=$IFS
 IFS=,
 [ ! -f $subj_info ] && { echo "$subj_info file not found"; exit 99; }
-while read subject dicom_subj dicom_anat r1 rname fname
+while read subject dicom_subj dicom_anat r1 rname aname fname
 do
 subnum=$((subnum +1));
 ##########################################################################################
@@ -83,7 +83,7 @@ then
 	echo "--------------------------------------------------------------------------------"
 	echo " $subject	--	$dicom_subj	--	$dicom_anat	--	${anat_name} "
 	echo "--------------------------------------------------------------------------------"
-sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} ${anat_name} ${dicom_root} ${dicom_subj} ${dicom_anat} raw_nii ${fname}
+sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} ${anat_name} ${dicom_root} ${dicom_subj} ${dicom_anat} raw_nii ${aname}
 	echo "--------------------------------------------------------------------------------"
 	echo " $subject	--	$dicom_subj	--	${r1} "
 	echo "--------------------------------------------------------------------------------"

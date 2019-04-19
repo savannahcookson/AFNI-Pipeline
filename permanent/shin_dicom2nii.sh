@@ -28,7 +28,6 @@ if [ ! -z "$nii_folder" ]; then
    	nii_folder=${nii_folder%/} #remove '/' at the end
 	nii_folder=/${nii_folder}
 fi
-echo $nii_folder
 
 if [ ! -d ~/.dcm2nii ]
 then
@@ -36,10 +35,10 @@ mkdir ~/.dcm2nii/
 cp -f /home/public/dcm2nii/dcm2nii.ini ~/.dcm2nii/
 fi
 
-echo ${analysisdirectory}${nii_folder}/${nii_name}.nii
-if [ ! -f ${analysisdirectory}${nii_folder}/${nii_name}.nii ]
+echo ${analysisdirectory}/${subject}${nii_folder}/${nii_name}.nii
+if [ ! -f ${analysisdirectory}/${subject}${nii_folder}/${nii_name}.nii ]
 then
-if [ ! -f ${analysisdirectory}${nii_folder}/${nii_name}.nii.gz ]
+if [ ! -f ${analysisdirectory}/${subject}${nii_folder}/${nii_name}.nii.gz ]
 then
 
 cd ${dicom_root}
