@@ -37,6 +37,8 @@ userPath='/home/despoC/scookson'
 
 scriptsPath='/home/despoC/scookson/Repositories/AFNI-Pipeline/permanent'
 
+rawLoc='rawdata'
+
 studyDirectory='Desktop/DemoTest'
 
 studySuffix=demo #select an identifier for your study. This will be appended to the files/folders produced by the script.
@@ -51,7 +53,7 @@ blur=6 #set to 2x voxel width for standard applications
 
 regressorNames='L R' #Symbolic names you would like to give each stimulus file in the order they appear in the stim folder
 
-contrasts=("+L" "+L -R") #symbolic contrasts and labels. Should be entered in pairs with the symbolic expression first.
+contrasts=("+L -R" "LeftVRight") #symbolic contrasts and labels. Should be entered in pairs with the symbolic expression first.
 
 subjects=("1") # subjects you desire to run; should match the folder name in which the starting data appear
 
@@ -77,7 +79,7 @@ then
 
 		echo $subject # prints the current subject number for progress logging.
 
-		sh $scriptsPath/AFNI_PROC.sh $subject $studySuffix "$blocksDesired" "$runPrefix" "$acqSeq" $blur "$regressorNames" "${contrasts[@]}"
+		sh $scriptsPath/AFNI_PROC.sh $subject $studySuffix $rawLoc "$blocksDesired" "$runPrefix" "$acqSeq" $blur "$regressorNames" "${contrasts[@]}"
 
 	done
 else

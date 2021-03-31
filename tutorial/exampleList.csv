@@ -1,0 +1,13 @@
+subject,dicom_subj,data_name,scan_folder,scan_name
+101,MW_001_20150219,rawdata,t1_MPRAGE_2,T1
+101,MW_001_20150219,rawdata,fMRI_physio_1_6,run01
+101,MW_001_20150219,rawdata,fMRI_physio_2_8,run02
+101,MW_001_20150219,rawdata,fMRI_physio_3_10,run03
+101,MW_001_20150219,rawdata,fMRI_physio_4_12,run04
+102,MW_002_20150219
+102,MW_002_20150219
+102,MW_002_20150219
+102,MW_002_20150219
+102,MW_002_20150219
+
+

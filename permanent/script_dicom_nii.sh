@@ -2,6 +2,10 @@
 ##########################################################################################
 ## Preprocessing script USING Sung Grid Engine
 ##
+## Modified by Savannah Cookson 20210226
+## Restructuring conversion pipeline to simplify setup and integrate
+## updated dcm2niix function
+##
 ## Modified by Jaemin Shin
 ## Written by Maarten Mennes & Michael Milham
 ## for more information see www.nitrc.org/projects/fcon_1000
@@ -54,14 +58,6 @@ subj_info=$3
 ####################
 dicom_root=$4
 
-####################
-## Parameters
-####################
-## anatomical scan you want to use (no extension): Filename under which your converted 
-## anatomical file will be saved
-anat_name='T1'
-## resting-state scan you want to use (no extension, optional)
-
 ##########################################################################################
 ##---START OF SCRIPT--------------------------------------------------------------------##
 ##---NO EDITING BELOW UNLESS YOU KNOW WHAT YOU ARE DOING--------------------------------##
@@ -69,29 +65,34 @@ anat_name='T1'
 mkdir -p $analysisdirectory
 #tr -d '\r' < $subj_info > tm---temp.csv
 #subj_info=tm---temp.csv
-subnum=0;
+
+#################################################################################
+
+subnum=0
 OLDIFS=$IFS
 IFS=,
-[ ! -f $subj_info ] && { echo "$subj_info file not found"; exit 99; }
-while read subject dicom_subj dicom_anat r1 rname aname fname
-do
-subnum=$((subnum +1));
-##########################################################################################
-## 
-if [  $subnum -gt 1 ] && [ $subnum -lt 2000  ] && [ $subject != '0' ]
-then
-	echo "--------------------------------------------------------------------------------"
-	echo " $subject	--	$dicom_subj	--	$dicom_anat	--	${anat_name} "
-	echo "--------------------------------------------------------------------------------"
-sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} ${anat_name} ${dicom_root} ${dicom_subj} ${dicom_anat} raw_nii ${aname}
-	echo "--------------------------------------------------------------------------------"
-	echo " $subject	--	$dicom_subj	--	${r1} "
-	echo "--------------------------------------------------------------------------------"
-sh ${scripts_dir}/shin_dicom2nii.sh ${scripts_dir} ${analysisdirectory} ${subject} fMRI_run${rname} ${dicom_root} ${dicom_subj} ${r1} raw_nii ${fname}
+#[ ! -f $subj_info ] && { echo "$subj_info file not found"; exit 99; }
 
+echo 'Copying Dicoms'
+
+while read subject dicom_subj data_name scan_folder scan_name; do
+subnum=$((subnum +1))
+
+if [[ $subnum -gt 1 ]] && [[ $subnum -lt 2000 ]] && [[ $subject != '0' ]] && [[ ! -z $subject ]]; then
+	echo "--------------------------------------------------------------------------------"
+	echo " $subject	--	$dicom_subj	--	$scan_name "
+	echo "--------------------------------------------------------------------------------"
+	sh ${scripts_dir}/dicomfilesetup.sh ${analysisdirectory} ${dicom_root} ${subject} ${dicom_subj} ${data_name} ${scan_folder} ${scan_name}
+
+	echo 'Running Conversion'
+
+	data_loc=${analysisdirectory}/${subject}/${data_name}
+	dcm2niix -f %f $data_loc/${scan_name}
+
+	mv $data_loc/$scan_name/${scan_name}.nii $data_loc
+	rm -r $data_loc/$scan_name
 
 fi
 done < $subj_info
-IFS=$OLDIFS
 
-#rm tm---temp.csv
+IFS=$OLDIFS

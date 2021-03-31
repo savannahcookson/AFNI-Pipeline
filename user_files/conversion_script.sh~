@@ -1,11 +1,6 @@
 #################################
 ## CABI Processing Stream Conversion Script
 ##
-## Updated 20210226 by Savannah Cookson
-## Rewriting pipeline to simplify processing and 
-## integrate with upgraded dcm2niix program. Not
-## currently compatible with .xls(x) files; CSV only.
-##
 ## Updated 20160617 by Savannah Cookson
 ## Fixed call to CSV file location
 ##
@@ -21,12 +16,12 @@
 ##
 #################################
 
-userPath='/home/despo/scookson'
-scriptsPath='/home/despo/scookson/Repositories/AFNI-Pipeline/permanent'
+userPath='/home/despoC/scookson'
+scriptsPath='/home/despoC/scookson/Repositories/AFNI-Pipeline/permanent'
 studyDirectoryName='Desktop/DemoTest'
-setupFilename='exampleList.csv'
-rawDataLocation='/home/despo/scookson/Repositories/AFNI-Pipeline/tutorial/rawData'
-#fileType=1 #use 1 for original CSV setup; use 2 for updated XLSX version (in progress)
+setupFilename='exampleList_CSVversion.csv'
+rawDataLocation='/home/despoC/scookson/Repositories/AFNI-Pipeline/tutorial/rawData'
+fileType=1 #use 1 for original CSV setup; use 2 for updated XLSX version (in progress)
 
 #################################
 ## DO NOT EDIT BELOW THIS LINE ##
@@ -34,15 +29,15 @@ rawDataLocation='/home/despo/scookson/Repositories/AFNI-Pipeline/tutorial/rawDat
 
 outDirectory=$userPath'/'$studyDirectoryName
 
-#if [ $fileType == 1 ]; then
+if [ $fileType == 1 ]; then
 	
 	echo Using CSV Setup...
 	CSVLocation=$outDirectory'/'$setupFilename
 	sh $scriptsPath/script_dicom_nii.sh $scriptsPath $outDirectory $CSVLocation $rawDataLocation
 
-#else
+else
 
-#	echo Using XLS Setup...
-#	$scriptsPath/dicom_nii_CABI.py $setupFilename $outDirectory $rawDataLocation 'raw_nii'
+	echo Using XLS Setup...
+	$scriptsPath/dicom_nii_CABI.py $setupFilename $outDirectory $rawDataLocation 'raw_nii'
 
-#fi
+fi

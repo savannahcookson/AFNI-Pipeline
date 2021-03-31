@@ -80,7 +80,7 @@ echo ${analysisdirectory}${nii_folder}/${nii_name}.nii
 echo ------------------------------------------------------------
 
 pwd
-dcm2nii -d n -e n -n y -i n -n y -p n -r y -x n -g n .
+dcm2niix -d n -e n -n y -i n -n y -p n -r y -x n -g n .
 
 mkdir -p ${analysisdirectory}/${subject}
 mkdir -p ${analysisdirectory}/${subject}${nii_folder}

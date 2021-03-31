@@ -26,9 +26,10 @@
 subject=$1
 studySuffix=$2
 analysisdirectory=$3
+scriptsdir=$4
 
 subjID=$subject'_'$studySuffix
-
+pe 
 echo $subjID
 jobID=job_$subjID
 
@@ -48,4 +49,4 @@ qsub \
 -o ${analysisdirectory}/log/analysis.${subject}.output.log \
 -N $jobID \
 -S /bin/sh \
-/home/despoC/scookson/Desktop/tutorialScripts/permanent/tcsh_shell.sh ${subjID} $analysisdirectory
+$scriptsdir/tcsh_shell.sh ${subjID} $analysisdirectory

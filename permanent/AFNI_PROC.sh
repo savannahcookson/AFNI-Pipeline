@@ -33,15 +33,18 @@
 ############
 subject="$1"
 studySuffix="$2"
-blocks="$3"
-runPrefix="$4"
-acqSeq="$5"
-blur="$6"
-stimLabels="$7"
-shift 7
+rawLoc="$3"
+blocks="$4"
+runPrefix="$5"
+acqSeq="$6"
+blur="$7"
+stimLabels="$8"
+shift 8
 contrasts=("${@}")
 
 subjID=$subject'_'$studySuffix
+
+echo $rawLoc
 
 ############
 ## Intelligently identifies the contrast expressions and labels and total number of contrasts.
@@ -84,8 +87,8 @@ else
 
 echo -e 'afni_proc.py \
 -subj_id '$subjID' \
--copy_anat '$subject'/raw_nii/T1.nii \
--dsets '$subject'/raw_nii/'$runPrefix'*.nii \
+-copy_anat '$subject'/'$rawLoc'/T1.nii \
+-dsets '$subject'/'$rawLoc'/'$runPrefix'*.nii \
 -blocks '$blocks' regress \
 -tshift_opts_ts -tpattern '$acqSeq' \
 -script '$subjID'.tcsh \
